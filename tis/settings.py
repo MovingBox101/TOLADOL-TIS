@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-#-3uzj8idfjt^qu03mz5c6cx8%%0dqm3ps$9p-znob5*l!+4t=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['TOLADOLCRM101.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -130,8 +130,10 @@ MEDIA_ROOT = BASE_DIR.joinpath('media/')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS =[
+    os.path.join(BASE_DIR, 'static')
+]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL ='tdolcrm.User'
