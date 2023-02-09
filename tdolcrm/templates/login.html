@@ -1,6 +1,5 @@
 {% load static %}
 {% load compress %}
-{% compress css %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +7,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="static/css/main.less">
+{% compress css%}
+	<link rel="stylesheet" type="text/x-scss" href="{% static '/css/main.scss' %}">
+{% endcompress %}
 <!--===============================================================================================-->
 <form class='login-form'>
 	<div class="flex-row">
@@ -31,4 +32,4 @@
 	</div>
 	<input class='lf--submit' type='submit' value='LOGIN'>
   </form>
-  <a class='lf--forgot' href='#'>Forgot password?</a>
+ 
