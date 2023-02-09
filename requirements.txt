@@ -3,4 +3,3 @@ Django==4.1.6
 sqlparse==0.4.3
 Django-countries
 Django-phonenumber-field
-Whitenoise
