@@ -1,5 +1,13 @@
 asgiref==3.6.0
 Django==4.1.6
+django-appconf==1.0.5
+django-compressor==4.3.1
+django-countries==7.5.1
+django-libsass==0.9
+django-phonenumber-field==7.0.2
+libsass==0.22.0
+rcssmin==1.1.1
+rjsmin==1.2.1
 sqlparse==0.4.3
-Django-countries
-Django-phonenumber-field
+typing_extensions==4.4.0
+whitenoise==6.3.0

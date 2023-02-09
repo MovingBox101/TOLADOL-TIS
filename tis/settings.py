@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['TOLADOLCRM101.pythonanywhere.com', '127.0.0.1']
 
 INSTALLED_APPS = [
     'tdolcrm', 
+    'compressor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -136,6 +137,16 @@ STATICFILES_DIRS = [
 #STATICFILES_DIRS =[
  #   os.path.join(BASE_DIR, 'static')
 #]
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder', 
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder', 
+    'compressor.finders.CompressorFinder',
+)
+
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'django_libsass.SassCompiler'),
+)
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
