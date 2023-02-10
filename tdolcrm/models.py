@@ -16,12 +16,22 @@ class Contact (models.Model):
     Address_1=models.CharField(max_length=250)
     Birthdate=models.DateField()
 
+    
+    def __str__(self):
+        return  self.First_Name, Last_Name
+
+
 class Prospect (Contact):
     Nature_of_Business = models.CharField(max_length=50)
     Nature_of_Shipment = models.CharField(max_length=50)
     Pickup_location = models.CharField(max_length=17)
     NoOfPackages_Monthly = models.IntegerField()
     Monthly_revenue = models.IntegerField()
+
+    def __str__(self):
+        return self.First_Name, Last_Name
+ 
+
 
 class Lead (Contact):
     Lead_Source = (
@@ -48,6 +58,7 @@ class Customer (Prospect):
     Consignee_Company = models.CharField(max_length=50)
     Address = models.CharField(max_length=50)
     No_of_packages_monthly = models.IntegerField()
+
 
 class Shipment_order(Customer):
     Consignee_telephone = models.IntegerField()
