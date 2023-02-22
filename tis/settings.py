@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['toladolventuresglobal.pythonanywhere.com', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'tdolcrm', 
     'compressor',
     'django.contrib.admin',
@@ -41,8 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_countries',
-    'phonenumber_field', 
+    'phonenumber_field',
+    'crispy_forms',
+    'crispy_bootstrap4'
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -60,7 +67,7 @@ ROOT_URLCONF = 'tis.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -130,9 +137,9 @@ MEDIA_ROOT = BASE_DIR.joinpath('media/')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'staticfiles')
+    os.path.join(BASE_DIR, 'static')
 ]
 #STATICFILES_DIRS =[
  #   os.path.join(BASE_DIR, 'static')
@@ -152,3 +159,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 AUTH_USER_MODEL ='tdolcrm.User'
+
+JAZZMIN_SETTING = {
+    "site_title": "TOLADOL Admin", 
+    "site_header": "TIS"
+}

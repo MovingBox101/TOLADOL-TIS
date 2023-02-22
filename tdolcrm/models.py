@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 from django.utils.text import gettext_lazy as _
 from django.contrib.auth.models import AbstractUser
+from django.urls import reverse
 
 class User(AbstractUser):
     pass
@@ -18,7 +19,8 @@ class Contact (models.Model):
 
     
     def __str__(self):
-        return  self.First_Name, Last_Name
+        self.full_name = self.First_Name + " " + self.Last_Name
+        return  self.full_name
 
 
 class Prospect (Contact):
@@ -29,7 +31,8 @@ class Prospect (Contact):
     Monthly_revenue = models.IntegerField()
 
     def __str__(self):
-        return self.First_Name, Last_Name
+        self.full_name = self.First_Name + " " + self.Last_Name
+        return self.full_name
  
 
 
@@ -140,6 +143,9 @@ class Sales_Resource(models.Model):
 class Customer_Service_Executive(models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
 
+    def __str__(self):
+        return self.user.email
+
 class Human_Resource(models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
    
@@ -168,7 +174,7 @@ class Campaign(models.Model):
    
 
 class Activities (models.Model):
-    Activity_name = models.CharField(max_length=20)
+    Activity_name = models.CharField(max_length=100)
     Date_created1=models.DateField()
     Start_date1=models.DateField()
     End_date1=models.DateField()
@@ -192,5 +198,6 @@ class Invoice (models.Model):
     Packaging_fee = models.IntegerField()
     Freight_cost = models.IntegerField()
     Total_shipment_cost = models.IntegerField()
+
 
 
