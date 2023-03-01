@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'django_countries',
     'phonenumber_field',
     'crispy_forms',
-    'crispy_bootstrap4'
+    'crispy_bootstrap4',
+    'fontawesomefree'
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
@@ -75,6 +76,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
             ],
         },
     },
