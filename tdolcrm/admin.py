@@ -1,4 +1,6 @@
 from django.contrib import admin
+#from django.contrib.auth.admin import UserAdmin
+#from django.contrib.auth.models import User
 
 from .models import Contact
 from .models import Prospect 
@@ -7,7 +9,7 @@ from .models import Shipment_order
 from .models import Shipment
 from .models import Assortment
 from .models import Case 
-from .models import Employee_Records, Branch , Campaign , Activities , Invoice , User, Lead
+from .models import Employee_Records, Branch , Campaign , Activities , Invoice , User, Lead, Role, Department
 
 
 class ContactAdmin(admin.ModelAdmin):
@@ -23,7 +25,7 @@ class CustomerAdmin(admin.ModelAdmin):
 admin.site.register(Customer, CustomerAdmin)
 
 class Shipment_orderAdmin(admin.ModelAdmin):
-    list_display = ('Consignee_telephone', 'No_of_packages', 'Item_description','customers')
+    list_display = ('Consignee_telephone', 'No_of_packages', 'Item_description')
 admin.site.register(Shipment_order, Shipment_orderAdmin)
 
 class ShipmentAdmin(admin.ModelAdmin):
@@ -31,7 +33,7 @@ class ShipmentAdmin(admin.ModelAdmin):
 admin.site.register(Shipment, ShipmentAdmin)
 
 class AssortmentAdmin(admin.ModelAdmin):
-    pass
+  list_display = ('Assortment_ID', 'Customer_Name', 'Assort_description', 'Item_label', 'pictures', 'uploaded_at', 'shipmentorder', 'AMOUNT_OF_QTY_SHIPPED', 'pictures_item', 'item_pictures', 'items_nums')
 admin.site.register(Assortment, AssortmentAdmin)
 
 class CaseAdmin(admin.ModelAdmin):
@@ -39,7 +41,7 @@ class CaseAdmin(admin.ModelAdmin):
 admin.site.register(Case, CaseAdmin)
 
 class Employee_RecordsAdmin(admin.ModelAdmin):
-    list_display = ('Employee_ID', 'Employee_Name', 'Employment_date','Resumption_date')
+    list_display = ('Employee_Name', 'Employment_date','Resumption_date')
 admin.site.register(Employee_Records, Employee_RecordsAdmin)
 
 class BranchAdmin(admin.ModelAdmin):
@@ -59,8 +61,17 @@ class InvoiceAdmin(admin.ModelAdmin):
 admin.site.register(Invoice, InvoiceAdmin)
 
 class LeadAdmin(admin.ModelAdmin):
-    pass
-   # list_display = ('uploaded_at', 'shipmentorder')
+    list_display = ( 'First_Name', 'Last_Name', 'Email_Address', 'Company_Name','Leads')
+
 admin.site.register(Lead, LeadAdmin)
+
+class RoleAdmin(admin.ModelAdmin):
+    list_display = ('Name')
+admin.site.register(Role)
+
+class DepartmentAdmin(admin.ModelAdmin):
+    list_display=('Name')
+admin.site.register(Department)
+
 
 #admin.site.register(User)
