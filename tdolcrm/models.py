@@ -38,7 +38,7 @@ class Customer (Prospect):
     Consignee_Name = models.CharField(max_length=50, verbose_name='Customer Name')
     Consignee_Company = models.CharField(max_length=50)
     Address = models.CharField(max_length=50)
-    No_of_packages_monthly = models.IntegerField()
+    No_of_packages_monthly = models.IntegerField(null=True)
 
 class Branch (models.Model):
     Branches = (
@@ -106,7 +106,11 @@ class Shipment_order(Customer):
     Dimensional_height = models.IntegerField()
     Item_description = models.TextField(max_length=250)
     Customer_signature = models.CharField(max_length=250)
+    Country_shipment = CountryField(blank_label = "(select country)", verbose_name= 'Country' ,default="") #consignee Country
    # Branch_of_shipment = models.OneToOneField(Branch, on_delete=models.CASCADE, related_name='', verbose_name='Shipment Branch', default="") #this generated an error without the @related_name
+    Postal_code = models.IntegerField()
+    Country_sender = CountryField(blank_label = "(select country)", verbose_name= 'Country' ,default="")
+    Senders_Name = models.CharField(max_length=250)
 
     Branches = (
         ('Ikeja' , 'Ikeja' ),
@@ -146,7 +150,9 @@ class Lead (Contact):
 
 class Shipment(models.Model):
     Tracking_id = models.IntegerField(primary_key=True)
-    Shipmentorder1 = models.OneToOneField(Shipment_order, on_delete=models.CASCADE, related_name='ships')
+    Shipmentorder1 = models.OneToOneField(Shipment_order, on_delete=models.CASCADE, related_name='ships', verbose_name='Order ID')
+    # SPECIFY OTHER FIELDS TO IDENTIFY THIS SHIPMENT WITH A CUSTOMER 
+    Consignee_name1 = models.OneToOneField(Shipment_order, on_delete=models.CASCADE, verbose_name = 'consignee Name', default="")
 
     EscalationReasons = (
         ('MISDECLARATION' ,'Misdeclaration'),

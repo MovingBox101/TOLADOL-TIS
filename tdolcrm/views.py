@@ -595,7 +595,7 @@ class ShipmentForm(ModelForm):
     )
     class Meta:
         model = models.Shipment
-        fields = ['Tracking_id', 'Shipmentorder1', 'Escalation']
+        fields = ['Tracking_id', 'Shipmentorder1', 'Escalation', 'Consignee_name1']
 
     @property
     def helper(self):
@@ -613,18 +613,16 @@ class ShipmentForm(ModelForm):
         return helper
 
 class ShipmentorderForm(ModelForm):
-    NoOfPackages_Monthly = forms.CharField(
-        label = 'No of Packages Monthly'
-    )
+   # NoOfPackages_Monthly = forms.CharField(
+    #    label = 'No of Packages Monthly'
+    #)
     Address_1 = forms.CharField(
         label = 'Address'
     )
    
     class Meta:
         model = models.Shipment_order
-        fields = ['Tracking_number','Last_Name', 'First_Name', 'Email_Address', 'Company_Name', 'Address_1', 'Birthdate','Nature_of_Business', 
-        'Nature_of_Shipment', 'Pickup_location', 'NoOfPackages_Monthly', 'Monthly_revenue', 'Consignee_Name', 'Address', 'NoOfPackages_Monthly',
-        'Consignee_telephone', 'No_of_packages', 'Dimensional_weight', 'Dimensional_height','Item_description', 'Customer_signature', 'Branch_of_shipment']
+        fields = ['Company_Name', 'Last_Name', 'First_Name','Email_Address', 'Consignee_telephone', 'Country_shipment', 'Dimensional_weight', 'Address_1', 'Country_sender', 'Postal_code', 'Senders_Name']
 
     @property
     def helper(self):
@@ -635,9 +633,9 @@ class ShipmentorderForm(ModelForm):
             helper.layout.append(
                 Field(field, wrapper_class='row')
             )
-        helper.layout.append(Submit('submit', 'Submit', css_class='btn-success'))
-        helper.field_class = 'col-9'
-        helper.label_class = 'col-3'
+          #  helper.field_class = 'col-3'
+           # helper.label_class = 'col-9'
+      #  helper.layout.append(Submit('submit', 'Submit', css_class='btn-success'))   
        
         return helper
 
