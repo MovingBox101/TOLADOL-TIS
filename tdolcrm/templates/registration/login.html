@@ -20,13 +20,12 @@
       </div> 
     </div>
       </header>
-      <form method = "post">
+      <form method = "POST" action = "{% url 'login' %}">
         {% csrf_token %}
       <input type="text" placeholder="Username" />
       <input type="password" required placeholder="Password" />
       <input type="submit" class="submitclass" value="Submit"> </input> <!--where was this class called? or how does this call the loginPageFunction. Also, in your urls, the loginPagefunction is commented out. which function is handling the login?-->
 
-      
 
       <svg id="svg-lines" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          viewBox="0 0 284.2 152.7" xml:space="preserve">

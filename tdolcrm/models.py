@@ -19,7 +19,7 @@ class Contact (models.Model):
     First_Name = models.CharField(max_length=50)
     Email_Address = models.EmailField(max_length=50)
     Company_Name = models.CharField(max_length=50)
-    Address_1=models.CharField(max_length=250, verbose_name='Address')
+    Address_1=models.TextField(max_length=250, verbose_name='Address')
     Birthdate=models.DateField()
 
 class Prospect (Contact):
@@ -108,9 +108,14 @@ class Shipment_order(Customer):
     Customer_signature = models.CharField(max_length=250)
     Country_shipment = CountryField(blank_label = "(select country)", verbose_name= 'Country' ,default="") #consignee Country
    # Branch_of_shipment = models.OneToOneField(Branch, on_delete=models.CASCADE, related_name='', verbose_name='Shipment Branch', default="") #this generated an error without the @related_name
-    Postal_code = models.IntegerField()
+    Postal_code = models.IntegerField(default="1")
     Country_sender = CountryField(blank_label = "(select country)", verbose_name= 'Country' ,default="")
-    Senders_Name = models.CharField(max_length=250)
+    Senders_FirstName = models.CharField(max_length=250 , verbose_name= 'First Name', default="")
+    Senders_LastName = models.CharField(max_length=250, verbose_name= 'Last Name', default="")
+    Total_weight = models.IntegerField(verbose_name = 'Total Weight' , default=0)
+    length = models.IntegerField(default=0)
+    Height= models.IntegerField(default=0)
+    Weight= models.IntegerField(default=0)
 
     Branches = (
         ('Ikeja' , 'Ikeja' ),

@@ -160,11 +160,10 @@ def LoginPage(request):
             login(request, user)
             return redirect('success')
         else:
-            return redirect('contact-list')
-            messages.info(request, 'username or password is invalid')
-    
-    #context= {}
-    return redirect('home')
+            messages='username or password is invalid'
+            return render(request,'login.html', {'message':message})
+
+    return render (request, 'login.html')
 
 #for you to enter the home page login is required. 
 
@@ -622,7 +621,7 @@ class ShipmentorderForm(ModelForm):
    
     class Meta:
         model = models.Shipment_order
-        fields = ['Company_Name', 'Last_Name', 'First_Name','Email_Address', 'Consignee_telephone', 'Country_shipment', 'Dimensional_weight', 'Address_1', 'Country_sender', 'Postal_code', 'Senders_Name']
+        fields = ['Company_Name', 'Last_Name', 'First_Name','Email_Address', 'Consignee_telephone', 'No_of_packages', 'Country_shipment', 'Dimensional_weight', 'Address_1', 'Country_sender', 'Postal_code', 'Senders_FirstName', 'Senders_LastName', 'Total_weight', 'length', 'Height', 'Weight' ]
 
     @property
     def helper(self):
