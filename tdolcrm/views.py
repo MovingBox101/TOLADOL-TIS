@@ -161,9 +161,9 @@ def LoginPage(request):
             return redirect('success')
         else:
             messages='username or password is invalid'
-            return render(request,'login.html', {'message':message})
+            return render(request,'registration/login.html', {'message':message})
 
-    return render (request, 'login.html')
+    return render (request, 'registration/login.html')
 
 #for you to enter the home page login is required. 
 
