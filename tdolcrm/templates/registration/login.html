@@ -9,7 +9,7 @@
   <div class="route" id="welcome"></div>
   <div id="app">
     <form class="app-view">  
-      <header class="app-header">
+<header class="app-header">
       <div class="overall">
         <div class="logo">
           <img src="{%static 'Images/logo-social.png'%}" class = "logofix" alt="">
@@ -19,11 +19,11 @@
          <br>TOLADOL INFORMATION SYSTEM<br/>
       </div> 
     </div>
-      </header>
+</header>
       <form method = "POST" action = "{% url 'login' %}">
         {% csrf_token %}
-      <input type="text" placeholder="Username" />
-      <input type="password" required placeholder="Password" />
+      <input type="text" name = username placeholder="Username" />
+      <input type="password" name = password required placeholder="Password" />
       <input type="submit" class="submitclass" value="Submit"> </input> <!--where was this class called? or how does this call the loginPageFunction. Also, in your urls, the loginPagefunction is commented out. which function is handling the login?-->
 
 

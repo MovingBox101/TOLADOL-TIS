@@ -5,7 +5,7 @@ from tdolcrm.models import *
 from django import forms
 from .forms import ContactForm, ShipmentForm, InvoiceForm , BranchForm , LeadForm, ProspectForm, CampaignForm, ShipmentorderForm, CaseForm, EmployeerecordsForm , AssortmentForm, LeadForm, ActivitiesForm
 from django.forms import ModelForm
-from django.http import HttpResponsePermanentRedirect
+from django.http import HttpResponsePermanentRedirect, HttpResponse
 #from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.views import generic
@@ -151,9 +151,8 @@ def shipment_record(request, pk):
 #this is the view that handles authentication, if the correct credientials are entered, take the user to the home page 
 def LoginPage(request):
     if request.method == 'POST':
-        username = request.POST('username')
-        password = request.POST('password')
-        print(username)
+        username = request.POST['username']
+        password = request.POST['password']
         user = authenticate(request, username= username, password= password)
         
         if user is not None:
@@ -163,7 +162,7 @@ def LoginPage(request):
             messages='username or password is invalid'
             return render(request,'registration/login.html', {'message':message})
 
-    return render (request, 'registration/login.html')
+    return render (request, 'registration/success.html')
 
 #for you to enter the home page login is required. 
 
@@ -331,9 +330,6 @@ def AssortmentPage(request):
 
 
 class ContactForm(ModelForm):
-    Address_1 = forms.CharField(
-        label = 'Address'
-    )
     class Meta:
         model = models.Contact
         fields = ['id', 'Last_Name', 'First_Name', 'Email_Address', 'Company_Name', 'Address_1','Birthdate']
@@ -621,7 +617,7 @@ class ShipmentorderForm(ModelForm):
    
     class Meta:
         model = models.Shipment_order
-        fields = ['Company_Name', 'Last_Name', 'First_Name','Email_Address', 'Consignee_telephone', 'No_of_packages', 'Country_shipment', 'Dimensional_weight', 'Address_1', 'Country_sender', 'Postal_code', 'Senders_FirstName', 'Senders_LastName', 'Total_weight', 'length', 'Height', 'Weight' ]
+        fields = ['Company_Name', 'Last_Name', 'First_Name','Email_Address', 'Consignee_telephone', 'No_of_packages', 'Country_shipment', 'Dimensional_weight', 'Address_1', 'Country_sender', 'Postal_code', 'Senders_FirstName', 'Senders_LastName','Item_description', 'Total_weight', 'length', 'Height', 'Weight' ]
 
     @property
     def helper(self):
