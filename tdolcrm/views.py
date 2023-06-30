@@ -150,19 +150,22 @@ def shipment_record(request, pk):
 
 #this is the view that handles authentication, if the correct credientials are entered, take the user to the home page 
 def LoginPage(request):
+    
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
+        
         user = authenticate(request, username= username, password= password)
         
         if user is not None:
             login(request, user)
             return redirect('success')
         else:
-            messages='username or password is invalid'
-            return render(request,'registration/login.html', {'message':message})
+             # Authentication failed, display an error message
+            message = "Invalid username or password."
+            return render(request, 'registration/success.html', {'message': message})
 
-    return render (request, 'registration/success.html')
+    return render(request, 'registration/login.html')
 
 #for you to enter the home page login is required. 
 
